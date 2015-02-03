@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="events.js"></script>
+ <script src="scope.js"></script>
+<script type="text/javascript">
+var materialModel = Scope.new({
+    id: 1,
+    name: 'material'
+});
+var time = materialModel.subScope({
+    sun: 'child',
+    name: 'hahah'
+});
+var aaaa = time.subScope({
+    ida: 'aaa'
+});
+time.on('aaa', function () {
+    alert('111');
+})
+aaaa.on('tt', function (a) {
+    alert(a)
+});
+aaaa.fire('tt', 4);
+materialModel.fire('tt', 1212);
+console.log(time.id, time.name, time.sun, materialModel.name, aaaa.ida, aaaa.id)
+    
+</script>
+</head>
+<body>
+</body>
+</html>
